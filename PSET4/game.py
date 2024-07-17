@@ -1,9 +1,35 @@
-# prompt the user for a level 'n'. 
-#   if the user does not input a positive integer, the program should prompt again.
-# randomly generates an integer between 1 and 'n', inclusive, using 'random' module
-# random module from docs.python.org/3/library/random.html.
-# prompt the user to guess that integer
-#   if the guess is not a positive integer, the program should prompt the user again
-#       if the guess is smaller than that integer, the program should output 'Too small!' and prompt the user again
-#       if the guess is larger than that integer, the program should output 'Too large!' and prompt the user again
-#       if the guess is the same as that integer, the program should output 'Just right!' and exit.
+# import random library
+import random
+
+# prompt the user for a level
+# ensure that the user provides positive integer
+while True:
+    try:
+        lvl = int(input("Level: "))
+        if lvl <= 0:
+            continue
+        else:
+            break
+    except ValueError:
+        continue
+
+# random.randint(a, b) is used to give out random number a <= N <= b
+randomNum = random.randint(1, lvl)
+
+# once all the specifications are correct, let the player makes the guess
+# if the guess is small, print out Too small!
+# if it is large, print out Too large!
+# if it is correct, print out Just right! and exit the program
+# if the user makes the guess which is not the integer, let say, a string, reprompt again.
+while True:
+    try:
+        guess = int(input("Guess: "))
+        if guess == randomNum:
+            print("Just right!")
+            break
+        elif guess < randomNum:
+            print("Too small!")
+        else:
+            print("Too large!")
+    except ValueError:
+        continue
