@@ -21,7 +21,7 @@ except (TypeError, ValueError) as e:
 try:
     r = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
     formatR = r.json()
-except request.RequestException:
+except requests.RequestException:
     sys.exit("An error in requesting the API call")
 
 # retrieve the Bitcoin price
